@@ -6,7 +6,7 @@ public class Main {
         int [] arrayToSort = {-8, 3, 5, 9, 11, 0, -5};
         int size = 7;
 
-        selectionSort(arrayToSort,size);
+        insertionSort(arrayToSort,size);
 
         System.out.println("The sorted array is: ");
         for(int i = 0; i < size; i++ ){
@@ -16,28 +16,28 @@ public class Main {
 
     }
 
-    private static void selectionSort(int[] arrayToSort, int size) {
+    private static void insertionSort(int[] arrayToSort, int size) {
 
-        int minIndex;
+        //Start with 1st element - assume it's sorted
 
-        for(int i = 0; i < size; i++){
-            minIndex = findMin(arrayToSort, i, size -1);
+        //2nd till last - one by one bring in sorted, put in right place
 
-            int temp = arrayToSort[i];
-            arrayToSort[i] = arrayToSort[minIndex];
-            arrayToSort[minIndex] = temp;
+        for(int i = 1; i < size; i++){
+            putElementInRightPosition(arrayToSort, i);
+        }
+
+    }
+
+    private static void putElementInRightPosition(int[] arrayToSort, int i) {
+        for(int j=i; j>0; j--){
+            if(arrayToSort[j] < arrayToSort[j-1]){
+                int temp = arrayToSort[j];
+                arrayToSort[j]=arrayToSort[j-1];
+                arrayToSort[j-1]=temp;
+            }
         }
     }
 
-    private static int findMin(int[] arrayToSort, int start, int end) {
 
-        int minIndex = start;
 
-        for(int i = start + 1; i <= end; i++){
-            if(arrayToSort[i] < arrayToSort[minIndex])
-                minIndex = i;
-        }
-
-        return minIndex;
-    }
 }
