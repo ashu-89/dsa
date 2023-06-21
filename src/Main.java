@@ -12,8 +12,6 @@ public class Main {
         for(int i = 0; i < size; i++ ){
             System.out.print(arrayToSort[i] + " ");
         }
-
-
     }
 
     private static void selectionSort(int[] arrayToSort, int size) {
